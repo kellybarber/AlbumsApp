@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 
-const AlbumList = () => {
-  return (
-    <Text>Album List</Text>
-  )
+class AlbumList extends Component {
+  state = { albums: [] }
+
+  componentWillMount() {
+    fetch('https://rallycoding.herokuapp.com/api/music_albums')
+      .then((response) => response.json())
+      .then((data) => this.setState({ albums: data }))
+  }
+
+  renderAlbums() {
+    return this.state.albums.map(album => 
+      <Text key={album.title}>{album.title}</Text>
+    )
+  }
+
+  render() {
+    return (
+      <Text>
+        {this.renderAlbums()}
+      </Text>
+    )
+  }
 }
 export default AlbumList
