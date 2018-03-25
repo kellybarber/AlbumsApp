@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import AlbumDetail from './AlbumDetail'
 
 class AlbumList extends Component {
-  state = { albums: [] }
+  state = { 
+    albums: [],
+    styles 
+  }
 
   componentWillMount() {
     fetch('https://rallycoding.herokuapp.com/api/music_albums')
@@ -13,16 +16,24 @@ class AlbumList extends Component {
 
   renderAlbums() {
     return this.state.albums.map(album => 
-      <AlbumDetail key={album.title} album={album}/>
+      <AlbumDetail key={album.title} album={album} />
     )
   }
 
   render() {
     return (
-      <Text>
+      <View style={styles.listStyle}>
         {this.renderAlbums()}
-      </Text>
+      </View>
     )
   }
 }
+
+const styles = {
+  listStyle: {
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  }
+}
+
 export default AlbumList

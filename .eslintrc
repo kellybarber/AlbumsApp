@@ -2,6 +2,11 @@
   "extends": "rallycoding",
   "rules": {
     "semi": 0,
-    "eol-last": 0
+    "eol-last": 0,
+    "react/require-extension": "off"
+  },
+  "globals": {
+     "fetch": false,
+     "state": false
   }
 }
