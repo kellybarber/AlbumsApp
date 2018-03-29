@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { ScrollView } from 'react-native'
 import AlbumDetail from './AlbumDetail'
 
 class AlbumList extends Component {
   state = { 
     albums: [],
-    styles 
   }
 
   componentWillMount() {
@@ -22,17 +21,10 @@ class AlbumList extends Component {
 
   render() {
     return (
-      <View style={styles.listStyle}>
+      <ScrollView>
         {this.renderAlbums()}
-      </View>
+      </ScrollView>
     )
-  }
-}
-
-const styles = {
-  listStyle: {
-    flexDirection: 'column',
-    justifyContent: 'space-between'
   }
 }
 
